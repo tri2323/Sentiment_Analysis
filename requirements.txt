@@ -83,7 +83,7 @@ statsmodels==0.13.1
 streamlit==0.67.1
 tweepy==3.9.0
 textblob==0.15.3
-typed-ast==1.4.0
+typed-ast==1.4.2
 tzlocal==2.1
 urllib3==1.25.10
 validators==0.18.1

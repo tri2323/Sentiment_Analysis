@@ -54,10 +54,10 @@ def main():
     st.subheader("Select a topic which you'd like to get the sentiment analysis on :")
 
     ################# Twitter API Connection #######################
-    consumer_key = "Enter Key Here"
-    consumer_secret = "Enter Key Here"
-    access_token = "Enter Key Here"
-    access_token_secret = "Enter Key Here"
+    consumer_key = 'NYPViLCgj1K9Wvh9yknCBmIFk'
+    consumer_secret = 'VlSIz5FcVI6Rucm3wN5q60JnNqcJ336EX4iUCFjZfuODWtQSdi'
+    access_token = '207395877-FehbLizVpCJrlsuu977Fpy9RLWiwzEmLEuN9VSX0'
+    access_token_secret = 'SSCfhowROiz9DVL45KrRru4tUf9va1WrUXG6RqWKuARpp'
 
 
 
@@ -65,7 +65,7 @@ def main():
 
     auth = tweepy.OAuthHandler( consumer_key , consumer_secret )
     auth.set_access_token( access_token , access_token_secret )
-    api = tweepy.API(auth)
+    api = tweepy.API(auth,wait_on_rate_limit=True)
     ################################################################
     
     df = pd.DataFrame(columns=["Date","User","IsVerified","Tweet","Likes","RT",'User_location'])
@@ -74,7 +74,7 @@ def main():
     def get_tweets(Topic,Count):
         i=0
         #my_bar = st.progress(100) # To track progress of Extracted tweets
-        for tweet in tweepy.Cursor(api.search, q=Topic,count=100, lang="en",exclude='retweets').items():
+        for tweet in tweepy.Cursor(api.search_tweets, q=Topic,count=100, lang="en",exclude='retweets').items():
             #time.sleep(0.1)
             #my_bar.progress(i)
             df.loc[i,"Date"] = tweet.created_at
