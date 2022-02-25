@@ -1,9 +1,3 @@
-"""
-Created on Thu Oct 05 17:42:01 2020
-
-@author: Abhishek Darekar
-"""
-
 
 
 import streamlit as st
